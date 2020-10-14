@@ -19,6 +19,12 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /tmp/config-data
+        env:
+        - name: TOP_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: hello-openshift-secret
+              key: topsecret
         livenessProbe:
           httpGet:
             path: /
